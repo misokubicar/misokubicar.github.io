@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Michal Kubičár | Business IT & Finance</title>
+  <meta name="description" content="Business Informatics student at FEI TUKE, long-term investor, and strength training enthusiast." />
+  <style>
+    :root {
+      --bg: #09090b;
+      --card: #121215;
+      --card-hover: #1a1a1f;
+      --border: #27272a;
+      --text: #fafafa;
+      --muted: #a1a1aa;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.12);
+      --green: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 16px 48px;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Header Card */
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: left;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .bio {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #18181b;
+      border: 1px solid var(--border);
+      color: #d4d4d8;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    /* Bento Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 112px;
+    }
+
+    .card:hover, .card:active {
+      background: var(--card-hover);
+      border-color: #3f3f46;
+      transform: translateY(-2px);
+    }
+
+    .card.full {
+      grid-column: span 2;
+      min-height: auto;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .icon {
+      font-size: 20px;
+    }
+
+    .arrow {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .card-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Copy Email Button */
+    .copy-btn {
+      background: #18181b;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .copy-btn:hover {
+      background: #27272a;
+    }
+
+    footer {
+      text-align: center;
+      color: #52525b;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- Úvodná karta -->
+    <section class="profile-card">
+      <div class="badge"><span class="dot"></span> Open to IT / PMO & Business Opportunities</div>
+      <h1>Michal Kubičár</h1>
+      <p class="bio">
+        Business Informatics student @ FEI TUKE. Focused on corporate IT, long-term equity investing, and building high-ROI daily habits.
+      </p>
+      <div class="tags">
+        <span class="tag">💻 Business IT & PMO</span>
+        <span class="tag">📈 Long-Term Investing</span>
+        <span class="tag">🏋️ Strength Training</span>
+      </div>
+    </section>
+
+    <!-- Hlavné odkazy (Bento Grid) -->
+    <section class="grid">
+      <!-- LinkedIn (UPRAV ODKAZ) -->
+      <a href="https://www.linkedin.com/in/misokubicar" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="icon">💼</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div>
+          <div class="card-title">LinkedIn</div>
+          <div class="card-sub">Career, CV & Network</div>
+        </div>
+      </a>
+
+      <!-- Hevy (Tvoj existujúci profil) -->
+      <a href="https://hevy.com/user/misokubicar" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="icon">🏋️</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div>
+          <div class="card-title">Hevy Workouts</div>
+          <div class="card-sub">Upper/Lower split & logs</div>
+        </div>
+      </a>
+
+      <!-- Projekt / Tichý rast (UPRAV ODKAZ ALEBO TEXT) -->
+      <a href="https://www.instagram.com/misokubicar" target="_blank" rel="noopener" class="card full">
+        <div>
+          <div class="card-title">📈 Tichý rast & Investing Notes</div>
+          <div class="card-sub">Capital allocation, inflation & personal efficiency</div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <!-- Threads -->
+      <a href="https://www.threads.net/@misokubicar" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="icon">💬</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div>
+          <div class="card-title">Threads</div>
+          <div class="card-sub">@misokubicar</div>
+        </div>
+      </a>
+
+      <!-- GitHub (UPRAV ODKAZ) -->
+      <a href="https://github.com/misokubicar" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="icon">⚙️</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div>
+          <div class="card-title">GitHub</div>
+          <div class="card-sub">Web & Python projects</div>
+        </div>
+      </a>
+
+      <!-- Kontakt (ochrana proti spam botom + rýchle kopírovanie) -->
+      <div class="card full">
+        <div>
+          <div class="card-title">✉️ Direct Contact</div>
+          <div class="card-sub" id="email-text">misokubicar@gmail.com</div>
+        </div>
+        <button class="copy-btn" onclick="copyEmail()">Copy Email</button>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Michal Kubičár · Košice, Slovakia
+    </footer>
+  </main>
+
+  <script>
+    function copyEmail() {
+      const email = document.getElementById('email-text').innerText;
+      navigator.clipboard.writeText(email).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = 'Copied ✓';
+        setTimeout(() => btn.innerText = 'Copy Email', 2000);
+      });
+    }
+  </script>
+</body>
+</html>
