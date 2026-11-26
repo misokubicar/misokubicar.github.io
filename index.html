@@ -7,10 +7,10 @@
   <meta name="description" content="Michal Kubičár — Business Informatics student at FEI TUKE focused on project coordination, process modeling (BPMN), data analysis, fundamental equity investing, and strength training." />
   <meta name="theme-color" content="#060608" />
 
-  <!-- Inline SVG Favicon: dark rounded square with crisp MK monogram -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f0f13' stroke='%233b82f6' stroke-opacity='0.45' stroke-width='2'/%3E%3Ctext x='50%25' y='53%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter,system-ui,sans-serif' font-weight='700' font-size='26' letter-spacing='-1' fill='%23f4f4f6'%3EM%3Ctspan fill='%233b82f6'%3EK%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
+  <!-- Inline SVG Favicon (safe percent-encoded) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f0f13' stroke='%233b82f6' stroke-width='3'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23f4f4f6' font-family='system-ui,sans-serif' font-weight='700' font-size='28'%3EMK%3C/text%3E%3C/svg%3E" />
 
-  <!-- Open Graph metadata for clean link previews -->
+  <!-- Open Graph metadata -->
   <meta property="og:title" content="Michal Kubičár | Business Informatics @ FEI TUKE" />
   <meta property="og:description" content="At the intersection of business, IT, systems thinking, and fundamental equity investing." />
   <meta property="og:type" content="website" />
@@ -21,9 +21,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* ==========================================================================
-       Design Tokens & Base Setup
-       ========================================================================== */
     :root {
       --bg: #060608;
       --surface: #0f0f13;
@@ -71,7 +68,6 @@
       position: relative;
     }
 
-    /* Architectural dot-grid pattern + subtle top radial glow */
     body::before {
       content: "";
       position: fixed;
@@ -84,7 +80,6 @@
       pointer-events: none;
     }
 
-    /* Subtle edge vignette for visual depth */
     body::after {
       content: "";
       position: fixed;
@@ -103,9 +98,6 @@
       font-family: inherit;
     }
 
-    /* ==========================================================================
-       Layout Container
-       ========================================================================== */
     .container {
       width: 100%;
       max-width: 960px;
@@ -122,17 +114,17 @@
       gap: 28px;
     }
 
-    /* ==========================================================================
-       Top Utility Bar
-       ========================================================================== */
-    .utility-bar {
-      width: fit-content;
-      margin-left: auto;
+    /* Top Utility Bar (Right-aligned pill without brand mark) */
+    .utility-wrap {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .utility-pill {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 9px 16px;
+      gap: 8px;
+      padding: 9px 15px;
       background: rgba(15, 15, 19, 0.78);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -140,13 +132,6 @@
       border-radius: 999px;
       font-family: var(--font-mono);
       font-size: 12px;
-      color: var(--text-secondary);
-    }
-
-    .live-clock {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
       color: var(--text-secondary);
       white-space: nowrap;
     }
@@ -167,9 +152,7 @@
       100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
 
-    /* ==========================================================================
-       Section Headers & 12-Column Bento Grid
-       ========================================================================== */
+    /* Sections & 12-Column Bento Grid */
     .section-group {
       display: flex;
       flex-direction: column;
@@ -208,11 +191,8 @@
     .col-8  { grid-column: span 8; }
     .col-6  { grid-column: span 6; }
     .col-4  { grid-column: span 4; }
-    .col-3  { grid-column: span 3; }
 
-    /* ==========================================================================
-       Bento Card & Mouse-Tracking Spotlight
-       ========================================================================== */
+    /* Bento Card & Spotlight */
     .bento-card {
       position: relative;
       background-color: var(--surface);
@@ -225,7 +205,6 @@
       --mouse-y: 50%;
     }
 
-    /* Top specular hairline */
     .bento-card::before {
       content: "";
       position: absolute;
@@ -238,7 +217,6 @@
       z-index: 2;
     }
 
-    /* Radial mouse-tracking spotlight */
     .bento-card::after {
       content: "";
       position: absolute;
@@ -269,9 +247,7 @@
       z-index: 1;
     }
 
-    /* ==========================================================================
-       Hero Row (8 cols Hero + 4 cols Snapshot Metrics)
-       ========================================================================== */
+    /* Hero Row */
     .hero-card {
       padding: 28px 30px;
       display: flex;
@@ -344,17 +320,18 @@
 
     .meta-chip svg {
       color: var(--text-muted);
-    /* Snapshot Metrics Card (3-Row Vertical Stack) */
+      flex-shrink: 0;
+    }
+
+    /* Snapshot Metrics Card (3 stacked rows on desktop) */
     .snapshot-card {
       padding: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 10px;
     }
 
     .stat-tile {
-      flex: 1;
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
@@ -373,7 +350,7 @@
 
     .stat-value {
       font-family: var(--font-mono);
-      font-size: 15.5px;
+      font-size: 14.5px;
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--text-primary);
@@ -386,14 +363,12 @@
     }
 
     .stat-label {
-      font-size: 11.5px;
+      font-size: 12px;
       line-height: 1.35;
       color: var(--text-muted);
     }
 
-    /* ==========================================================================
-       Focus & Mindset Cards
-       ========================================================================== */
+    /* Focus & Mindset */
     .focus-card {
       display: flex;
       flex-direction: column;
@@ -445,9 +420,7 @@
       color: rgba(255, 255, 255, 0.18);
     }
 
-    /* ==========================================================================
-       Projects & Experience Cards
-       ========================================================================== */
+    /* Projects & Experience */
     .project-card {
       display: flex;
       flex-direction: column;
@@ -521,9 +494,7 @@
       border-color: rgba(255, 255, 255, 0.12);
     }
 
-    /* ==========================================================================
-       Skills & Tools Cards
-       ========================================================================== */
+    /* Skills & Tools */
     .skills-card {
       display: flex;
       flex-direction: column;
@@ -569,9 +540,7 @@
       background: rgba(255, 255, 255, 0.06);
     }
 
-    /* ==========================================================================
-       Profiles & Direct Email Bar
-       ========================================================================== */
+    /* Profiles & Email */
     .social-card {
       display: flex;
       flex-direction: column;
@@ -620,7 +589,6 @@
       color: var(--text-muted);
     }
 
-    /* Direct Email Bar */
     .email-bar {
       padding: 20px 24px;
       display: flex;
@@ -701,9 +669,7 @@
       transform: none;
     }
 
-    /* ==========================================================================
-       Footer
-       ========================================================================== */
+    /* Footer */
     footer {
       display: flex;
       align-items: center;
@@ -736,9 +702,7 @@
       font-size: 11.5px;
     }
 
-    /* ==========================================================================
-       Toast Notification
-       ========================================================================== */
+    /* Toast */
     .toast {
       position: fixed;
       bottom: 24px;
@@ -773,50 +737,34 @@
       background: var(--emerald);
     }
 
-    /* ==========================================================================
-       Staggered Entrance Animations
-       ========================================================================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    .delay-1 { animation-delay: 0.04s; }
-    .delay-2 { animation-delay: 0.10s; }
-    .delay-3 { animation-delay: 0.16s; }
-    .delay-4 { animation-delay: 0.22s; }
-    .delay-5 { animation-delay: 0.28s; }
-    .delay-6 { animation-delay: 0.34s; }
-
+    /* Safe entrance motion (elements stay visible by default) */
     @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        opacity: 1;
-        transform: none;
-        animation: none;
-      }
-      .live-dot {
-        animation: none;
-      }
+    .reveal {
+      animation: fadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Focus Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none; }
+      .live-dot { animation: none; }
+    }
+
     a:focus-visible,
     button:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
 
-    /* ==========================================================================
-       Responsive Breakpoints
-       ========================================================================== */
+    /* Responsive Breakpoints */
     @media (max-width: 860px) {
       .col-8,
       .col-4,
@@ -824,16 +772,11 @@
         grid-column: span 12;
       }
 
-      .col-3 {
-        grid-column: span 6;
-      }
-
       .social-card.col-4 {
         grid-column: span 4;
       }
 
       .snapshot-card {
-        display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
@@ -848,8 +791,8 @@
         gap: 22px;
       }
 
-      .utility-bar {
-        padding: 9px 14px;
+      .utility-pill {
+        padding: 8px 13px;
         font-size: 11px;
       }
 
@@ -863,8 +806,7 @@
       }
 
       .snapshot-card {
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: 1fr;
         padding: 14px;
       }
 
@@ -873,10 +815,38 @@
       }
 
       .project-top {
-/* ... existing code ... -->
-    <!-- 1. TOP UTILITY BAR -->
-    <header class="utility-bar reveal delay-1" aria-label="Local time in Košice">
-      <div class="live-clock" aria-live="polite">
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .email-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+
+      .email-actions {
+        width: 100%;
+      }
+
+      .email-actions .btn {
+        flex: 1;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- 1. TOP UTILITY PILL -->
+    <header class="utility-wrap reveal" aria-label="Local time">
+      <div class="utility-pill" aria-live="polite">
         <span class="live-dot" aria-hidden="true"></span>
         <span>Košice, SK</span>
         <span aria-hidden="true">·</span>
@@ -886,8 +856,8 @@
 
     <main>
 
-      <!-- 2. HERO ROW (8 cols Hero + 4 cols Snapshot Metrics) -->
-      <section class="bento-grid reveal delay-2" aria-label="Introduction and highlights">
+      <!-- 2. HERO ROW -->
+      <section class="bento-grid reveal" aria-label="Introduction and highlights">
         <article class="bento-card hero-card col-8">
           <div>
             <div class="hero-eyebrow">Business Informatics @ FEI TUKE</div>
@@ -914,11 +884,7 @@
           </div>
         </article>
 
-        <!-- 2x2 Snapshot Metrics Card -->
-        <aside class="bento-card snapshot-card col-4" aria-label="Snapshot metrics">
-          <div class="stat-tile">
-            <div class="stat-value accent">2nd Place</div>
-        <!-- 3-Row Snapshot Metrics Card -->
+        <!-- 3-Row Snapshot Metrics -->
         <aside class="bento-card snapshot-card col-4" aria-label="Snapshot metrics">
           <div class="stat-tile">
             <div class="stat-value accent">2nd Place</div>
@@ -936,14 +902,13 @@
       </section>
 
       <!-- 3. FOCUS & MINDSET -->
-      <section class="section-group reveal delay-3" aria-labelledby="focus-heading">
+      <section class="section-group reveal" aria-labelledby="focus-heading">
         <div class="section-header">
           <h2 id="focus-heading" class="section-label">Focus &amp; Mindset</h2>
           <div class="section-line" aria-hidden="true"></div>
         </div>
 
         <div class="bento-grid">
-          <!-- Card 1: Equity Investing & Valuation -->
           <article class="bento-card focus-card col-4">
             <div>
               <div class="icon-box" aria-hidden="true">
@@ -965,7 +930,6 @@
             </div>
           </article>
 
-          <!-- Card 2: AI & Systems Thinking -->
           <article class="bento-card focus-card col-4">
             <div>
               <div class="icon-box" aria-hidden="true">
@@ -987,7 +951,6 @@
             </div>
           </article>
 
-          <!-- Card 3: Physical Discipline -->
           <article class="bento-card focus-card col-4">
             <div>
               <div class="icon-box" aria-hidden="true">
@@ -1014,14 +977,13 @@
       </section>
 
       <!-- 4. SELECTED PROJECTS & EXPERIENCE -->
-      <section class="section-group reveal delay-4" aria-labelledby="projects-heading">
+      <section class="section-group reveal" aria-labelledby="projects-heading">
         <div class="section-header">
           <h2 id="projects-heading" class="section-label">Selected Projects &amp; Experience</h2>
           <div class="section-line" aria-hidden="true"></div>
         </div>
 
         <div class="bento-grid">
-          <!-- Featured Card (12 cols) -->
           <article class="bento-card project-card featured col-12">
             <div>
               <div class="project-top">
@@ -1041,7 +1003,6 @@
             </div>
           </article>
 
-          <!-- Card 2 (6 cols) -->
           <article class="bento-card project-card col-6">
             <div>
               <div class="project-top">
@@ -1059,7 +1020,6 @@
             </div>
           </article>
 
-          <!-- Card 3 (6 cols) -->
           <article class="bento-card project-card col-6">
             <div>
               <div class="project-top">
@@ -1080,7 +1040,7 @@
       </section>
 
       <!-- 5. SKILLS & TOOLS -->
-      <section class="section-group reveal delay-5" aria-labelledby="skills-heading">
+      <section class="section-group reveal" aria-labelledby="skills-heading">
         <div class="section-header">
           <h2 id="skills-heading" class="section-label">Skills &amp; Tools</h2>
           <div class="section-line" aria-hidden="true"></div>
@@ -1119,14 +1079,13 @@
       </section>
 
       <!-- 6. PROFILES & CONTACT -->
-      <section class="section-group reveal delay-6" aria-labelledby="contact-heading">
+      <section class="section-group reveal" aria-labelledby="contact-heading">
         <div class="section-header">
           <h2 id="contact-heading" class="section-label">Profiles &amp; Contact</h2>
           <div class="section-line" aria-hidden="true"></div>
         </div>
 
         <div class="bento-grid">
-          <!-- LinkedIn (Fixed URL with percent-encoded diacritics) -->
           <a href="https://www.linkedin.com/in/michal-kubi%C4%8D%C3%A1r" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-4">
             <div class="social-top">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1142,7 +1101,6 @@
             </div>
           </a>
 
-          <!-- GitHub -->
           <a href="https://github.com/misokubicar" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-4">
             <div class="social-top">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1157,7 +1115,6 @@
             </div>
           </a>
 
-          <!-- Instagram -->
           <a href="https://www.instagram.com/misokubicar" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-4">
             <div class="social-top">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1173,7 +1130,7 @@
             </div>
           </a>
 
-          <!-- Direct Email Full-Width Card -->
+          <!-- Direct Email -->
           <div class="bento-card email-bar col-12">
             <div class="email-meta">
               <span class="email-label">Direct Email</span>
@@ -1202,7 +1159,7 @@
     </main>
 
     <!-- 7. FOOTER -->
-    <footer class="reveal delay-6">
+    <footer class="reveal">
       <div class="footer-links">
         <a href="https://www.threads.net/@misokubicar" target="_blank" rel="noopener noreferrer">Threads</a>
         <span aria-hidden="true">·</span>
@@ -1213,7 +1170,7 @@
 
   </div>
 
-  <!-- Toast notification for clipboard feedback -->
+  <!-- Toast -->
   <div class="toast" id="toast" role="status" aria-live="polite">
     <span class="toast-dot" aria-hidden="true"></span>
     <span>Email copied to clipboard</span>
@@ -1223,9 +1180,7 @@
     (function () {
       'use strict';
 
-      /* ----------------------------------------------------------------------
-         1. Live Local Time in Košice, Slovakia (Europe/Bratislava)
-         ---------------------------------------------------------------------- */
+      /* 1. Live Local Time in Košice (Europe/Bratislava) */
       const timeEl = document.getElementById('local-time');
 
       function updateLocalTime() {
@@ -1238,7 +1193,6 @@
             second: '2-digit',
             hour12: false
           });
-
           const tzFormatter = new Intl.DateTimeFormat('en-GB', {
             timeZone: 'Europe/Bratislava',
             timeZoneName: 'short'
@@ -1251,33 +1205,23 @@
             timeEl.textContent = `${timeFormatter.format(now)} ${tzLabel}`;
           }
         } catch (err) {
-          if (timeEl) {
-            timeEl.textContent = 'CET';
-          }
+          if (timeEl) timeEl.textContent = 'CET';
         }
       }
 
       updateLocalTime();
       setInterval(updateLocalTime, 1000);
 
-      /* ----------------------------------------------------------------------
-         2. Mouse-Tracking Radial Spotlight Effect on Bento Cards
-         ---------------------------------------------------------------------- */
-      const cards = document.querySelectorAll('.bento-card');
-
-      cards.forEach((card) => {
+      /* 2. Mouse-Tracking Radial Spotlight */
+      document.querySelectorAll('.bento-card').forEach((card) => {
         card.addEventListener('pointermove', (event) => {
           const rect = card.getBoundingClientRect();
-          const x = event.clientX - rect.left;
-          const y = event.clientY - rect.top;
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
+          card.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);
         });
       });
 
-      /* ----------------------------------------------------------------------
-         3. One-Click Email Copy with iFrame-Safe Fallback & Toast Notification
-         ---------------------------------------------------------------------- */
+      /* 3. One-Click Email Copy (Modern Clipboard API first, fallback second) */
       const copyBtn = document.getElementById('copy-btn');
       const copyBtnLabel = document.getElementById('copy-btn-label');
       const emailTextEl = document.getElementById('email-text');
@@ -1306,24 +1250,15 @@
 
       function showCopiedFeedback() {
         if (!copyBtn || !copyBtnLabel) return;
-
         copyBtn.classList.add('copied');
         copyBtnLabel.textContent = 'Copied ✓';
+        if (toastEl) toastEl.classList.add('show');
 
-        if (toastEl) {
-          toastEl.classList.add('show');
-        }
-
-        if (copyResetTimer) {
-          clearTimeout(copyResetTimer);
-        }
-
+        if (copyResetTimer) clearTimeout(copyResetTimer);
         copyResetTimer = setTimeout(() => {
           copyBtn.classList.remove('copied');
           copyBtnLabel.textContent = 'Copy email';
-          if (toastEl) {
-            toastEl.classList.remove('show');
-          }
+          if (toastEl) toastEl.classList.remove('show');
         }, 2200);
       }
 
@@ -1335,14 +1270,9 @@
             navigator.clipboard.writeText(email)
               .then(() => showCopiedFeedback())
               .catch(() => {
-                if (fallbackCopy(email)) {
-                  showCopiedFeedback();
-                }
+                if (fallbackCopy(email)) showCopiedFeedback();
               });
-            return;
-          }
-
-          if (fallbackCopy(email)) {
+          } else if (fallbackCopy(email)) {
             showCopiedFeedback();
           }
         });
