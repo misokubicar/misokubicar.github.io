@@ -23,8 +23,8 @@
        ========================================================================== */
     :root {
       --bg: #060608;
-      --surface: #0d0e12;
-      --surface-hover: #13151b;
+      --surface: #0f0f13;
+      --surface-hover: #15161c;
       --surface-subtle: rgba(255, 255, 255, 0.025);
       --border: rgba(255, 255, 255, 0.08);
       --border-hover: rgba(255, 255, 255, 0.16);
@@ -68,26 +68,26 @@
       position: relative;
     }
 
-    /* Architectural dot-grid pattern + subtle radial top glow */
+    /* Architectural dot-grid pattern + subtle top radial glow */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       z-index: -2;
       background-image:
-        radial-gradient(ellipse 80% 45% at 50% -10%, rgba(59, 130, 246, 0.08), transparent 70%),
+        radial-gradient(ellipse 80% 45% at 50% -10%, rgba(59, 130, 246, 0.09), transparent 70%),
         radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
       background-size: 100% 100%, 24px 24px;
       pointer-events: none;
     }
 
-    /* Subtle top edge vignette */
+    /* Subtle edge vignette for visual depth */
     body::after {
       content: "";
       position: fixed;
       inset: 0;
       z-index: -1;
-      background: radial-gradient(circle at 50% 50%, transparent 55%, rgba(6, 6, 8, 0.75) 100%);
+      background: radial-gradient(circle at 50% 50%, transparent 55%, rgba(6, 6, 8, 0.78) 100%);
       pointer-events: none;
     }
 
@@ -113,6 +113,12 @@
       gap: 28px;
     }
 
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
     /* ==========================================================================
        Top Utility Bar
        ========================================================================== */
@@ -122,7 +128,7 @@
       justify-content: space-between;
       gap: 12px;
       padding: 10px 16px;
-      background: rgba(13, 14, 18, 0.72);
+      background: rgba(15, 15, 19, 0.78);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
@@ -141,7 +147,7 @@
       gap: 8px;
     }
 
-    .brand-mark span.slash {
+    .brand-mark .slash {
       color: var(--accent);
     }
 
@@ -240,7 +246,7 @@
       z-index: 2;
     }
 
-    /* Radial mouse spotlight */
+    /* Radial mouse-tracking spotlight */
     .bento-card::after {
       content: "";
       position: absolute;
@@ -248,7 +254,7 @@
       border-radius: inherit;
       background: radial-gradient(
         420px circle at var(--mouse-x) var(--mouse-y),
-        rgba(59, 130, 246, 0.085),
+        rgba(59, 130, 246, 0.09),
         transparent 60%
       );
       opacity: 0;
@@ -272,7 +278,7 @@
     }
 
     /* ==========================================================================
-       Hero Row (Hero Card + Snapshot Metrics Card)
+       Hero Row (8 cols Hero + 4 cols Snapshot Metrics)
        ========================================================================== */
     .hero-card {
       padding: 28px 30px;
@@ -349,9 +355,9 @@
       flex-shrink: 0;
     }
 
-    /* Key Metrics / Snapshot Card */
+    /* Snapshot Metrics Card (2x2 Grid) */
     .snapshot-card {
-      padding: 18px;
+      padding: 16px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
@@ -376,11 +382,11 @@
 
     .stat-value {
       font-family: var(--font-mono);
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--text-primary);
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .stat-value.accent {
@@ -459,11 +465,11 @@
     }
 
     .project-card.featured {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.045) 0%, var(--surface) 42%);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, var(--surface) 44%);
     }
 
     .project-card.featured:hover {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.065) 0%, var(--surface-hover) 45%);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.075) 0%, var(--surface-hover) 48%);
     }
 
     .project-top {
@@ -746,14 +752,14 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(16px);
-      background: #13151b;
+      background: #15161c;
       border: 1px solid var(--emerald-border);
       color: var(--text-primary);
       font-family: var(--font-mono);
       font-size: 12px;
       padding: 10px 16px;
       border-radius: 999px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -776,7 +782,7 @@
     }
 
     /* ==========================================================================
-       Subtle Entrance Animations
+       Staggered Entrance Animations
        ========================================================================== */
     .reveal {
       opacity: 0;
@@ -841,6 +847,10 @@
         gap: 22px;
       }
 
+      main {
+        gap: 22px;
+      }
+
       .utility-bar {
         padding: 9px 14px;
         font-size: 11px;
@@ -899,11 +909,11 @@
         <span class="live-dot" aria-hidden="true"></span>
         <span>Košice, SK</span>
         <span aria-hidden="true">·</span>
-        <time id="local-time">--:-- CET</time>
+        <time id="local-time">--:--:-- CET</time>
       </div>
     </header>
 
-    <main style="display: flex; flex-direction: column; gap: 28px;">
+    <main>
 
       <!-- 2. HERO ROW (8 cols Hero + 4 cols Snapshot Metrics) -->
       <section class="bento-grid reveal delay-2" aria-label="Introduction and highlights">
@@ -921,7 +931,7 @@
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
-              Košice / Spišská Nová Ves, SK
+              Košice / Spišská Nová Ves, Slovakia
             </span>
             <span class="meta-chip">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -933,22 +943,23 @@
           </div>
         </article>
 
-        <aside class="bento-card snapshot-card col-4" aria-label="Key highlights">
+        <!-- 2x2 Snapshot Metrics Card -->
+        <aside class="bento-card snapshot-card col-4" aria-label="Snapshot metrics">
           <div class="stat-tile">
-            <div class="stat-value accent">2nd</div>
+            <div class="stat-value accent">2nd Place</div>
             <div class="stat-label">National PM Hackathon</div>
           </div>
           <div class="stat-tile">
-            <div class="stat-value">3x</div>
-            <div class="stat-label">Int'l Seasons (BE/NL/DE/LU)</div>
+            <div class="stat-value">3 Seasons</div>
+            <div class="stat-label">Intl. Event Structures</div>
           </div>
           <div class="stat-tile">
-            <div class="stat-value">Core + Equity</div>
-            <div class="stat-label">ROIC &amp; DCF Investing</div>
+            <div class="stat-value">4-Day Split</div>
+            <div class="stat-label">Upper / Lower Strength</div>
           </div>
           <div class="stat-tile">
-            <div class="stat-value">4-Day</div>
-            <div class="stat-label">Upper/Lower Split</div>
+            <div class="stat-value">ROI &amp; DCF</div>
+            <div class="stat-label">Equity Investing Focus</div>
           </div>
         </aside>
       </section>
@@ -961,7 +972,7 @@
         </div>
 
         <div class="bento-grid">
-          <!-- Card 1: Equity Investing -->
+          <!-- Card 1: Equity Investing & Valuation -->
           <article class="bento-card focus-card col-4">
             <div>
               <div class="icon-box" aria-hidden="true">
@@ -1064,7 +1075,7 @@
             <div>
               <div class="project-top">
                 <h3 class="project-title">FIFO Portfolio &amp; Dividend Tracker</h3>
-                <span class="badge">Personal Tool</span>
+                <span class="badge">Personal Project</span>
               </div>
               <p class="card-text">
                 Local web app that processes CSV exports from XTB and Trading 212. Automatically tracks the 365-day tax-exemption holding period, received dividends, and true portfolio performance.
@@ -1144,8 +1155,8 @@
         </div>
 
         <div class="bento-grid">
-          <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/in/michal-kubicar" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-3">
+          <!-- LinkedIn (Fixed URL with percent-encoded diacritics) -->
+          <a href="https://www.linkedin.com/in/michal-kubi%C4%8D%C3%A1r" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-3">
             <div class="social-top">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -1211,7 +1222,7 @@
             </div>
           </a>
 
-          <!-- Direct Email Bar (full width) -->
+          <!-- Direct Email Full-Width Card -->
           <div class="bento-card email-bar col-12">
             <div class="email-meta">
               <span class="email-label">Direct Email</span>
@@ -1277,7 +1288,6 @@
             hour12: false
           });
 
-          // Determine CET/CEST dynamically
           const tzFormatter = new Intl.DateTimeFormat('en-GB', {
             timeZone: 'Europe/Bratislava',
             timeZoneName: 'short'
@@ -1315,7 +1325,7 @@
       });
 
       /* ----------------------------------------------------------------------
-         3. One-Click Email Copy with iFrame-Safe Fallback & Toast
+         3. One-Click Email Copy with iFrame-Safe Fallback & Toast Notification
          ---------------------------------------------------------------------- */
       const copyBtn = document.getElementById('copy-btn');
       const copyBtnLabel = document.getElementById('copy-btn-label');
@@ -1370,7 +1380,6 @@
         copyBtn.addEventListener('click', () => {
           const email = emailTextEl.textContent.trim();
 
-          // Use execCommand first for reliable iframe/sandbox support, with Clipboard API fallback
           if (fallbackCopy(email)) {
             showCopiedFeedback();
             return;
