@@ -7,6 +7,9 @@
   <meta name="description" content="Michal Kubičár — Business Informatics student at FEI TUKE focused on project coordination, process modeling (BPMN), data analysis, fundamental equity investing, and strength training." />
   <meta name="theme-color" content="#060608" />
 
+  <!-- Inline SVG Favicon: dark rounded square with crisp MK monogram -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f0f13' stroke='%233b82f6' stroke-opacity='0.45' stroke-width='2'/%3E%3Ctext x='50%25' y='53%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter,system-ui,sans-serif' font-weight='700' font-size='26' letter-spacing='-1' fill='%23f4f4f6'%3EM%3Ctspan fill='%233b82f6'%3EK%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
+
   <!-- Open Graph metadata for clean link previews -->
   <meta property="og:title" content="Michal Kubičár | Business Informatics @ FEI TUKE" />
   <meta property="og:description" content="At the intersection of business, IT, systems thinking, and fundamental equity investing." />
@@ -123,11 +126,13 @@
        Top Utility Bar
        ========================================================================== */
     .utility-bar {
-      display: flex;
+      width: fit-content;
+      margin-left: auto;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 16px;
+      justify-content: center;
+      gap: 10px;
+      padding: 9px 16px;
       background: rgba(15, 15, 19, 0.78);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -136,19 +141,6 @@
       font-family: var(--font-mono);
       font-size: 12px;
       color: var(--text-secondary);
-    }
-
-    .brand-mark {
-      color: var(--text-primary);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .brand-mark .slash {
-      color: var(--accent);
     }
 
     .live-clock {
@@ -352,26 +344,25 @@
 
     .meta-chip svg {
       color: var(--text-muted);
-      flex-shrink: 0;
-    }
-
-    /* Snapshot Metrics Card (2x2 Grid) */
+    /* Snapshot Metrics Card (3-Row Vertical Stack) */
     .snapshot-card {
       padding: 16px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .stat-tile {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 14px 12px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 10px;
+    }
+
+    .stat-tile {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
       transition: border-color 0.2s ease, background-color 0.2s ease;
     }
 
@@ -387,6 +378,7 @@
       letter-spacing: -0.02em;
       color: var(--text-primary);
       line-height: 1.25;
+      white-space: nowrap;
     }
 
     .stat-value.accent {
@@ -836,8 +828,13 @@
         grid-column: span 6;
       }
 
+      .social-card.col-4 {
+        grid-column: span 4;
+      }
+
       .snapshot-card {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
@@ -866,45 +863,19 @@
       }
 
       .snapshot-card {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        display: flex;
+        flex-direction: column;
         padding: 14px;
       }
 
+      .social-card.col-4 {
+        grid-column: span 12;
+      }
+
       .project-top {
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .email-bar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 14px;
-      }
-
-      .email-actions {
-        width: 100%;
-      }
-
-      .email-actions .btn {
-        flex: 1;
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-
+/* ... existing code ... -->
     <!-- 1. TOP UTILITY BAR -->
-    <header class="utility-bar reveal delay-1" aria-label="Site header and local time">
-      <div class="brand-mark">
-        <span class="slash">//</span>michal.kubicar
-      </div>
+    <header class="utility-bar reveal delay-1" aria-label="Local time in Košice">
       <div class="live-clock" aria-live="polite">
         <span class="live-dot" aria-hidden="true"></span>
         <span>Košice, SK</span>
@@ -947,6 +918,10 @@
         <aside class="bento-card snapshot-card col-4" aria-label="Snapshot metrics">
           <div class="stat-tile">
             <div class="stat-value accent">2nd Place</div>
+        <!-- 3-Row Snapshot Metrics Card -->
+        <aside class="bento-card snapshot-card col-4" aria-label="Snapshot metrics">
+          <div class="stat-tile">
+            <div class="stat-value accent">2nd Place</div>
             <div class="stat-label">National PM Hackathon</div>
           </div>
           <div class="stat-tile">
@@ -956,10 +931,6 @@
           <div class="stat-tile">
             <div class="stat-value">4-Day Split</div>
             <div class="stat-label">Upper / Lower Strength</div>
-          </div>
-          <div class="stat-tile">
-            <div class="stat-value">ROI &amp; DCF</div>
-            <div class="stat-label">Equity Investing Focus</div>
           </div>
         </aside>
       </section>
@@ -1156,7 +1127,7 @@
 
         <div class="bento-grid">
           <!-- LinkedIn (Fixed URL with percent-encoded diacritics) -->
-          <a href="https://www.linkedin.com/in/michal-kubi%C4%8D%C3%A1r" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-3">
+          <a href="https://www.linkedin.com/in/michal-kubi%C4%8D%C3%A1r" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-4">
             <div class="social-top">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -1172,7 +1143,7 @@
           </a>
 
           <!-- GitHub -->
-          <a href="https://github.com/misokubicar" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-3">
+          <a href="https://github.com/misokubicar" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-4">
             <div class="social-top">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
@@ -1187,7 +1158,7 @@
           </a>
 
           <!-- Instagram -->
-          <a href="https://www.instagram.com/misokubicar" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-3">
+          <a href="https://www.instagram.com/misokubicar" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-4">
             <div class="social-top">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
@@ -1199,26 +1170,6 @@
             <div>
               <div class="social-name">Instagram</div>
               <div class="social-sub">@misokubicar</div>
-            </div>
-          </a>
-
-          <!-- Hevy -->
-          <a href="https://hevy.com/user/miso6217" target="_blank" rel="noopener noreferrer" class="bento-card social-card col-3">
-            <div class="social-top">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M6.5 6.5h11"/>
-                <path d="M6.5 17.5h11"/>
-                <path d="M4 9v6"/>
-                <path d="M20 9v6"/>
-                <path d="M2 10.5v3"/>
-                <path d="M22 10.5v3"/>
-                <path d="M12 6.5v11"/>
-              </svg>
-              <span class="arrow-icon" aria-hidden="true">↗</span>
-            </div>
-            <div>
-              <div class="social-name">Hevy</div>
-              <div class="social-sub">Workout Logs</div>
             </div>
           </a>
 
@@ -1380,15 +1331,19 @@
         copyBtn.addEventListener('click', () => {
           const email = emailTextEl.textContent.trim();
 
-          if (fallbackCopy(email)) {
-            showCopiedFeedback();
-            return;
-          }
-
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(email)
               .then(() => showCopiedFeedback())
-              .catch(() => {});
+              .catch(() => {
+                if (fallbackCopy(email)) {
+                  showCopiedFeedback();
+                }
+              });
+            return;
+          }
+
+          if (fallbackCopy(email)) {
+            showCopiedFeedback();
           }
         });
       }
